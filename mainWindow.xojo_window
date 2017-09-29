@@ -23,7 +23,7 @@ Begin Window mainWindow
    MinWidth        =   64
    Placement       =   0
    Resizeable      =   True
-   Title           =   "名称未設定"
+   Title           =   "Reftful api -upload "
    Visible         =   True
    Width           =   588
    Begin Label Label1
@@ -54,7 +54,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   33
+      Top             =   65
       Transparent     =   True
       Underline       =   False
       Visible         =   True
@@ -88,7 +88,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   88
+      Top             =   109
       Transparent     =   True
       Underline       =   False
       Visible         =   True
@@ -122,7 +122,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   143
+      Top             =   21
       Transparent     =   True
       Underline       =   False
       Visible         =   True
@@ -159,12 +159,12 @@ Begin Window mainWindow
       TabIndex        =   3
       TabPanelIndex   =   0
       TabStop         =   True
-      Text            =   "680759765417693"
+      Text            =   ""
       TextColor       =   &c00000000
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   32
+      Top             =   63
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -201,12 +201,12 @@ Begin Window mainWindow
       TabIndex        =   4
       TabPanelIndex   =   0
       TabStop         =   True
-      Text            =   "716948191364995210fb91988316f524"
+      Text            =   ""
       TextColor       =   &c00000000
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   87
+      Top             =   107
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -222,7 +222,7 @@ Begin Window mainWindow
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
-      InitialValue    =   ""
+      InitialValue    =   "Youtube\nFacebook\n"
       Italic          =   False
       Left            =   235
       ListIndex       =   0
@@ -238,7 +238,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   142
+      Top             =   20
       Underline       =   False
       Visible         =   True
       Width           =   287
@@ -256,7 +256,7 @@ Begin Window mainWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   148
+      Left            =   349
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -269,7 +269,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   200
+      Top             =   327
       Underline       =   False
       Visible         =   True
       Width           =   173
@@ -296,13 +296,13 @@ Begin Window mainWindow
       Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
-      Text            =   "AccessToken :"
+      Text            =   "OAuth Code"
       TextAlign       =   0
       TextColor       =   &c00000000
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   258
+      Top             =   153
       Transparent     =   True
       Underline       =   False
       Visible         =   True
@@ -336,7 +336,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   304
+      Top             =   241
       Transparent     =   True
       Underline       =   False
       Visible         =   True
@@ -378,7 +378,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   303
+      Top             =   239
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -397,7 +397,7 @@ Begin Window mainWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   442
+      Left            =   349
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -410,12 +410,12 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   200
+      Top             =   411
       Underline       =   False
       Visible         =   True
-      Width           =   80
+      Width           =   172
    End
-   Begin TextField txtAccessToken
+   Begin TextField txtOAuthCode
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
@@ -451,7 +451,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   257
+      Top             =   151
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -485,7 +485,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   337
+      Top             =   284
       Transparent     =   True
       Underline       =   False
       Visible         =   True
@@ -527,7 +527,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   336
+      Top             =   283
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -546,7 +546,7 @@ Begin Window mainWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   442
+      Left            =   349
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -559,7 +559,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   383
+      Top             =   487
       Underline       =   False
       Visible         =   True
       Width           =   80
@@ -631,11 +631,194 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   424
+      Top             =   453
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
       Width           =   436
+   End
+   Begin PushButton btnGetUserName1
+      AutoDeactivate  =   True
+      Bold            =   False
+      ButtonStyle     =   "0"
+      Cancel          =   False
+      Caption         =   "Get Name"
+      Default         =   False
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   349
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Scope           =   0
+      TabIndex        =   19
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   369
+      Underline       =   False
+      Visible         =   True
+      Width           =   172
+   End
+   Begin Label Label7
+      AutoDeactivate  =   True
+      Bold            =   False
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   86
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   20
+      TabPanelIndex   =   0
+      Text            =   "Access Token"
+      TextAlign       =   0
+      TextColor       =   &c00000000
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   197
+      Transparent     =   True
+      Underline       =   False
+      Visible         =   True
+      Width           =   100
+   End
+   Begin TextField txtAccessToken
+      AcceptTabs      =   False
+      Alignment       =   0
+      AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   False
+      BackColor       =   &cFFFFFF00
+      Bold            =   False
+      Border          =   True
+      CueText         =   ""
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Format          =   ""
+      Height          =   22
+      HelpTag         =   ""
+      Index           =   -2147483648
+      Italic          =   False
+      Left            =   235
+      LimitText       =   0
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Mask            =   ""
+      Password        =   False
+      ReadOnly        =   False
+      Scope           =   0
+      TabIndex        =   21
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   ""
+      TextColor       =   &c00000000
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   195
+      Underline       =   False
+      UseFocusRing    =   True
+      Visible         =   True
+      Width           =   287
+   End
+   Begin TextField TextField1
+      AcceptTabs      =   False
+      Alignment       =   0
+      AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   False
+      BackColor       =   &cFFFFFF00
+      Bold            =   False
+      Border          =   True
+      CueText         =   ""
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Format          =   ""
+      Height          =   76
+      HelpTag         =   ""
+      Index           =   -2147483648
+      Italic          =   False
+      Left            =   86
+      LimitText       =   0
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Mask            =   ""
+      Password        =   False
+      ReadOnly        =   False
+      Scope           =   0
+      TabIndex        =   22
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   ""
+      TextColor       =   &c00000000
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   359
+      Underline       =   False
+      UseFocusRing    =   True
+      Visible         =   True
+      Width           =   251
+   End
+   Begin Label Label8
+      AutoDeactivate  =   True
+      Bold            =   False
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   86
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   23
+      TabPanelIndex   =   0
+      Text            =   "Log"
+      TextAlign       =   0
+      TextColor       =   &c00000000
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   327
+      Transparent     =   True
+      Underline       =   False
+      Visible         =   True
+      Width           =   100
    End
 End
 #tag EndWindow
@@ -643,8 +826,7 @@ End
 #tag WindowCode
 	#tag Event
 		Sub Open()
-		  pmProvider.AddRow("Facebook")
-		  Self.btnGetUserName.Enabled = false
+		  
 		End Sub
 	#tag EndEvent
 
@@ -667,6 +849,7 @@ End
 		  popupBrowser.htmlView.LoadURL url
 		  
 		  popupBrowser.ShowModal
+		  
 		  
 		End Sub
 	#tag EndEvent
@@ -742,7 +925,7 @@ End
 		      
 		      fileuploader  = New HTTPSecureSocket
 		      
-		       formdataCreator  = new HttpFormdataGenerator
+		      formdataCreator  = new HttpFormdataGenerator
 		      
 		      formdataCreator.AddContent("access_token",App.oauth2.AccessToken)
 		      formdataCreator.AddContent("upload_phase","transfer")
@@ -795,6 +978,17 @@ End
 		  
 		  
 		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btnGetUserName1
+	#tag Event
+		Sub Action()
+		  Dim userInfomation as JSONItem = App.oauth2.getUserInformation
+		  if (userInfomation<>nil)then
+		    txtName.Text = userInfomation.Value("name")
+		    txtid.Text = userInfomation.Value("id")
+		  end if
 		End Sub
 	#tag EndEvent
 #tag EndEvents

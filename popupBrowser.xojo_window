@@ -39,7 +39,7 @@ Begin Window popupBrowser
       LockRight       =   False
       LockTop         =   True
       Renderer        =   0
-      Scope           =   "0"
+      Scope           =   0
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
@@ -66,7 +66,7 @@ Begin Window popupBrowser
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
-      Scope           =   "0"
+      Scope           =   0
       TabIndex        =   1
       TabPanelIndex   =   0
       TabStop         =   True
@@ -102,6 +102,10 @@ End
 		mClientInfo As ClientInfo
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		OAuthCode As String
+	#tag EndProperty
+
 
 #tag EndWindowCode
 
@@ -111,8 +115,10 @@ End
 		  dim code As String = mClientInfo.GetAuthoCode(newTitle) 
 		  
 		  if (code <> "") then
-		    mainWindow.txtAccessToken.Text =code
+		    OAuthCode = code
+		    mainWindow.txtAccessToken.Text =popupBrowser.OAuthCode
 		    mainWindow.btnGetUserName.Enabled = true
+		    
 		    MsgBox "Close this window"
 		    Self.btnClose.Enabled = true
 		  end if
