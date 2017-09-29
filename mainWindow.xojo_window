@@ -243,7 +243,7 @@ Begin Window mainWindow
       Visible         =   True
       Width           =   287
    End
-   Begin PushButton GetOAuthCode
+   Begin PushButton btnGetOAuthCode
       AutoDeactivate  =   True
       Bold            =   False
       ButtonStyle     =   "0"
@@ -637,12 +637,12 @@ Begin Window mainWindow
       Visible         =   True
       Width           =   436
    End
-   Begin PushButton btnGetUserName1
+   Begin PushButton btnGetToken
       AutoDeactivate  =   True
       Bold            =   False
       ButtonStyle     =   "0"
       Cancel          =   False
-      Caption         =   "Get Name"
+      Caption         =   "Get Token"
       Default         =   False
       Enabled         =   True
       Height          =   20
@@ -833,7 +833,7 @@ End
 
 #tag EndWindowCode
 
-#tag Events GetOAuthCode
+#tag Events btnGetOAuthCode
 	#tag Event
 		Sub Action()
 		  Dim provider as string = pmProvider.Text
@@ -981,14 +981,10 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events btnGetUserName1
+#tag Events btnGetToken
 	#tag Event
 		Sub Action()
-		  Dim userInfomation as JSONItem = App.oauth2.getUserInformation
-		  if (userInfomation<>nil)then
-		    txtName.Text = userInfomation.Value("name")
-		    txtid.Text = userInfomation.Value("id")
-		  end if
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
