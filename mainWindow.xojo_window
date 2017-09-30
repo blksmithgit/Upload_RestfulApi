@@ -744,7 +744,7 @@ Begin Window mainWindow
       Visible         =   True
       Width           =   287
    End
-   Begin TextField TextField1
+   Begin TextField txtLog
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
@@ -820,6 +820,17 @@ Begin Window mainWindow
       Visible         =   True
       Width           =   100
    End
+   Begin HttpSecureSocket MySocket
+      CertificateFile =   
+      CertificatePassword=   ""
+      CertificateRejectionFile=   
+      ConnectionType  =   3
+      Index           =   -2147483648
+      LockedInPosition=   False
+      Scope           =   0
+      Secure          =   True
+      TabPanelIndex   =   0
+   End
 End
 #tag EndWindow
 
@@ -829,6 +840,11 @@ End
 		  
 		End Sub
 	#tag EndEvent
+
+
+	#tag Property, Flags = &h0
+		mClientInfo As ClientInfo
+	#tag EndProperty
 
 
 #tag EndWindowCode
@@ -842,13 +858,15 @@ End
 		  
 		  App.oauth2 = new OAuth2(provider, clientKey, clientSecret)
 		  
-		  Dim info As ClientInfo = new YoutubeClientInfo
-		  Dim url as string = info.AssembleOAuthUri
+		  mClientInfo = new YoutubeClientInfo
+		  Dim url as string = mClientInfo.AssembleOAuthUri
 		  
-		  popupBrowser.SetClient info
+		  popupBrowser.SetClient mClientInfo
 		  popupBrowser.htmlView.LoadURL url
 		  
 		  popupBrowser.ShowModal
+		  
+		  
 		  
 		  
 		End Sub
@@ -984,6 +1002,99 @@ End
 #tag Events btnGetToken
 	#tag Event
 		Sub Action()
+		  //dim MySocket As  new HTTPSecureSocket
+		  //MySocket.ConnectionType = 3
+		  MySocket.Secure = True
+		  //MySocket.Yield = true
+		  
+		  //MySocket.HTTPProxyAddress = "127.0.0.1"
+		  //MySocket.HTTPProxyPort = 1080
+		  MySocket.ConnectionType = 2
+		  
+		  
+		  
+		  MySocket.SetRequestHeader("Content-Type","application/x-www-form-urlencoded")
+		  
+		  
+		  
+		  
+		  Dim d As  Dictionary= mClientInfo.AssembleToken
+		  
+		  
+		  
+		  
+		  MySocket.SetFormData(d)
+		  
+		  
+		  dim url as string  = mClientInfo.GetTokenUri
+		  
+		  MySocket.Post url
+		  
+		  dim API_Call_Results As  String=""
+		  //txtLog.Text = ""
+		  //txtToken.Text = ""
+		  //API_Call_Results =MySocket.Post(url)
+		  //txtLog.Text = API_Call_Results
+		  IF API_Call_Results <> "" Then
+		    //MessageBox 
+		    Dim ItemToParse as New JSONItem
+		    
+		    ItemToParse.Load(API_Call_Results)
+		    //dim TokenResultsDictionary as Dictionary = Common_Module.JSONToDictionary(ItemToParse)
+		    
+		    //txtToken.Text  = TokenResultsDictionary.Lookup("access_token","").StringValue
+		  END IF
+		  
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events MySocket
+	#tag Event
+		Sub PageReceived(url as string, httpStatus as integer, headers as internetHeaders, content as string)
+		  dim result As string = content
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Error(code as integer)
+		  dim erro as integer
+		  erro = code
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Connected()
+		  dim a As string
+		  txtLog.Text = "connected"
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub HeadersReceived(headers as internetHeaders, httpStatus as integer)
+		  txtLog.text = chr(httpStatus)
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Function AuthenticationRequired(Realm As String, Headers As InternetHeaders, ByRef Name As String, ByRef Password As String) As Boolean
+		  
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub DownloadComplete(url as string, httpStatus as integer, headers as internetHeaders, file as folderItem)
+		  dim t As string = url
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Function SendProgress(BytesSent As Integer, BytesLeft As Integer) As Boolean
+		  dim t as integer = BytesSent
+		End Function
+	#tag EndEvent
+	#tag Event
+		Function ProxyAuthenticationRequired(Realm As String, Headers As InternetHeaders, ByRef Name As String, ByRef Password As String) As Boolean
+		  dim t as String = realm
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub ReceiveProgress(bytesReceived as integer, totalBytes as integer, newData as string)
 		  
 		End Sub
 	#tag EndEvent

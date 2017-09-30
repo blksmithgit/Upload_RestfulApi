@@ -1,12 +1,6 @@
 #tag Interface
 Protected Interface IClientInfo
 	#tag Method, Flags = &h0
-		Function GetAuthoCode(title as String) As String
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Function GetAuthUri() As String
 		  
 		End Function
@@ -32,6 +26,12 @@ Protected Interface IClientInfo
 
 	#tag Method, Flags = &h0
 		Function GetTokenUri() As String
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function ParseOAuthCode(title as String) As String
 		  
 		End Function
 	#tag EndMethod

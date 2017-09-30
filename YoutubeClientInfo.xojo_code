@@ -8,6 +8,21 @@ Inherits ClientInfo
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function AssembleToken() As Dictionary
+		  Dim d As New Dictionary
+		  
+		  d.Value("code") = Code
+		  d.Value("client_id")= mClientID
+		  
+		  d.Value("client_secret")=mClientSecret
+		  d.Value("redirect_uri")=mRedirectUri
+		  d.Value("grant_type") = "authorization_code"
+		  
+		  return d
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub Constructor()
 		  // Calling the overridden superclass constructor.
 		  mClientID = "289772526038-ajknqg4lrlt9avhupmlugdk8oa7glvai.apps.googleusercontent.com"
@@ -23,7 +38,7 @@ Inherits ClientInfo
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetAuthoCode(title as String) As String
+		Function ParseOAuthCode(title as String) As String
 		  dim pos As integer = instr(title,"Success code=")
 		  if (pos>0) then
 		    return title.right(len(title)-len("Success code="))
@@ -33,14 +48,20 @@ Inherits ClientInfo
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Function IsAuthoCode() As Boolean
-		  
-		End Function
-	#tag EndMethod
-
 
 	#tag ViewBehavior
+		#tag ViewProperty
+			Name="AccessToken"
+			Group="Behavior"
+			Type="String"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Code"
+			Group="Behavior"
+			Type="String"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
 			Visible=true
@@ -60,6 +81,12 @@ Inherits ClientInfo
 			Visible=true
 			Group="ID"
 			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="RefreshToken"
+			Group="Behavior"
+			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"

@@ -8,8 +8,8 @@ Implements IClientInfo
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetAuthoCode(title as String) As String
-		  return ""
+		Function AssembleToken() As Dictionary
+		  
 		End Function
 	#tag EndMethod
 
@@ -54,6 +54,12 @@ Implements IClientInfo
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function ParseOAuthCode(title as String) As String
+		  return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub SetClientID(id As String)
 		  // 这是接口IClientInfo的一部分。
 		  
@@ -69,6 +75,14 @@ Implements IClientInfo
 		End Sub
 	#tag EndMethod
 
+
+	#tag Property, Flags = &h0
+		AccessToken As String
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		Code As String
+	#tag EndProperty
 
 	#tag Property, Flags = &h1
 		Protected mAuthUri As String
@@ -98,8 +112,24 @@ Implements IClientInfo
 		Protected mTokenUri As String
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		RefreshToken As String
+	#tag EndProperty
+
 
 	#tag ViewBehavior
+		#tag ViewProperty
+			Name="AccessToken"
+			Group="Behavior"
+			Type="String"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Code"
+			Group="Behavior"
+			Type="String"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
 			Visible=true
@@ -119,6 +149,12 @@ Implements IClientInfo
 			Visible=true
 			Group="ID"
 			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="RefreshToken"
+			Group="Behavior"
+			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"

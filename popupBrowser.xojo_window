@@ -112,11 +112,12 @@ End
 #tag Events htmlView
 	#tag Event
 		Sub TitleChanged(newTitle as String)
-		  dim code As String = mClientInfo.GetAuthoCode(newTitle) 
+		  dim code As String = mClientInfo.ParseOAuthCode( newTitle)
 		  
 		  if (code <> "") then
-		    OAuthCode = code
-		    mainWindow.txtAccessToken.Text =popupBrowser.OAuthCode
+		    //OAuthCode = code
+		    mClientInfo.Code = code
+		    mainWindow.txtAccessToken.Text =code
 		    mainWindow.btnGetUserName.Enabled = true
 		    
 		    MsgBox "Close this window"
@@ -313,6 +314,12 @@ End
 		Group="ID"
 		Type="String"
 		EditorType="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="OAuthCode"
+		Group="Behavior"
+		Type="String"
+		EditorType="MultiLineEditor"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Placement"

@@ -2,3 +2,6 @@
 .Upload.xojo_uistate
 
 TempSaveFile*
+Builds*
+Upload.xojo_binary_project
+oauth2.debug.*
