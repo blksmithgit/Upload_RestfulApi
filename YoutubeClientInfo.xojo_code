@@ -29,7 +29,7 @@ Inherits ClientInfo
 		  mClientSecret = "C9K1JGssIYL8jfJvaxsSpBzZ"
 		  mRedirectUri = "urn:ietf:wg:oauth:2.0:oob:auto"
 		  mAuthUri = "https://accounts.google.com/o/oauth2/v2/auth?"
-		  mTokenUri = "https://accounts.google.com/o/oauth2/v4/token"
+		  mTokenUri = "https://www.googleapis.com/oauth2/v4/token"
 		  mScope = "https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube"
 		  mResponseType = "code"
 		  

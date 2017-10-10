@@ -19,7 +19,7 @@ Begin Window mainWindow
    MenuBar         =   0
    MenuBarVisible  =   True
    MinHeight       =   64
-   MinimizeButton  =   True
+   MinimizeButton  =   False
    MinWidth        =   64
    Placement       =   0
    Resizeable      =   True
@@ -650,7 +650,7 @@ Begin Window mainWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   349
+      Left            =   350
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -663,7 +663,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   369
+      Top             =   370
       Underline       =   False
       Visible         =   True
       Width           =   172
@@ -702,7 +702,7 @@ Begin Window mainWindow
       Visible         =   True
       Width           =   100
    End
-   Begin TextField txtAccessToken
+   Begin TextField txtToken
       AcceptTabs      =   False
       Alignment       =   0
       AutoDeactivate  =   True
@@ -1005,11 +1005,11 @@ End
 		  //dim MySocket As  new HTTPSecureSocket
 		  //MySocket.ConnectionType = 3
 		  MySocket.Secure = True
-		  //MySocket.Yield = true
+		  MySocket.Yield = true
 		  
 		  //MySocket.HTTPProxyAddress = "127.0.0.1"
 		  //MySocket.HTTPProxyPort = 1080
-		  MySocket.ConnectionType = 2
+		  MySocket.ConnectionType = 3
 		  
 		  
 		  
@@ -1022,27 +1022,29 @@ End
 		  
 		  
 		  
-		  
 		  MySocket.SetFormData(d)
 		  
 		  
+		  txtLog.Text = ""
 		  dim url as string  = mClientInfo.GetTokenUri
 		  
-		  MySocket.Post url
+		  
 		  
 		  dim API_Call_Results As  String=""
-		  //txtLog.Text = ""
-		  //txtToken.Text = ""
-		  //API_Call_Results =MySocket.Post(url)
-		  //txtLog.Text = API_Call_Results
+		  
+		  //API_Call_Results=MySocket.SendRequest("Post",url,60)
+		  txtLog.Text = ""
+		  txtToken.Text = ""
+		  API_Call_Results =MySocket.Post(url,10)
+		  txtLog.Text = API_Call_Results
 		  IF API_Call_Results <> "" Then
 		    //MessageBox 
 		    Dim ItemToParse as New JSONItem
 		    
 		    ItemToParse.Load(API_Call_Results)
-		    //dim TokenResultsDictionary as Dictionary = Common_Module.JSONToDictionary(ItemToParse)
+		    dim TokenResultsDictionary as Dictionary = Common_Module.JSONToDictionary(ItemToParse)
 		    
-		    //txtToken.Text  = TokenResultsDictionary.Lookup("access_token","").StringValue
+		    txtToken.Text  = TokenResultsDictionary.Lookup("access_token","").StringValue
 		  END IF
 		  
 		  
@@ -1059,6 +1061,7 @@ End
 		Sub Error(code as integer)
 		  dim erro as integer
 		  erro = code
+		  txtLog.Text = code.ToText
 		  
 		End Sub
 	#tag EndEvent
@@ -1075,7 +1078,8 @@ End
 	#tag EndEvent
 	#tag Event
 		Function AuthenticationRequired(Realm As String, Headers As InternetHeaders, ByRef Name As String, ByRef Password As String) As Boolean
-		  
+		  Dim tmp As String = realm
+		  return true
 		End Function
 	#tag EndEvent
 	#tag Event
@@ -1095,7 +1099,7 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub ReceiveProgress(bytesReceived as integer, totalBytes as integer, newData as string)
-		  
+		  dim t As  integer = bytesReceived
 		End Sub
 	#tag EndEvent
 #tag EndEvents

@@ -117,7 +117,7 @@ End
 		  if (code <> "") then
 		    //OAuthCode = code
 		    mClientInfo.Code = code
-		    mainWindow.txtAccessToken.Text =code
+		    mainWindow.txtToken.Text =code
 		    mainWindow.btnGetUserName.Enabled = true
 		    
 		    MsgBox "Close this window"
