@@ -116,6 +116,10 @@ Implements IClientInfo
 		RefreshToken As String
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		UploadFile As FolderItem
+	#tag EndProperty
+
 
 	#tag ViewBehavior
 		#tag ViewProperty

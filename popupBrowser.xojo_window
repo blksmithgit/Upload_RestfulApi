@@ -118,7 +118,7 @@ End
 		    //OAuthCode = code
 		    mClientInfo.Code = code
 		    mainWindow.txtToken.Text =code
-		    mainWindow.btnGetUserName.Enabled = true
+		    //mainWindow.btnGetUserName.Enabled = true
 		    
 		    MsgBox "Close this window"
 		    Self.btnClose.Enabled = true

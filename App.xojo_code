@@ -9,10 +9,6 @@ Inherits Application
 
 
 	#tag Property, Flags = &h0
-		oauth2 As OAuth2
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
 		uploadFile As UploadData
 	#tag EndProperty
 

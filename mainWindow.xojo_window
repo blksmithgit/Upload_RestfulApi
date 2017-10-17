@@ -384,12 +384,12 @@ Begin Window mainWindow
       Visible         =   True
       Width           =   287
    End
-   Begin PushButton btnGetUserName
+   Begin PushButton btnGetUploadurl
       AutoDeactivate  =   True
       Bold            =   False
       ButtonStyle     =   "0"
       Cancel          =   False
-      Caption         =   "Get Name"
+      Caption         =   "Get UploadUrl"
       Default         =   False
       Enabled         =   True
       Height          =   20
@@ -397,7 +397,7 @@ Begin Window mainWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   349
+      Left            =   409
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -410,10 +410,10 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   411
+      Top             =   476
       Underline       =   False
       Visible         =   True
-      Width           =   172
+      Width           =   112
    End
    Begin TextField txtOAuthCode
       AcceptTabs      =   False
@@ -541,12 +541,12 @@ Begin Window mainWindow
       Caption         =   "Openfile"
       Default         =   False
       Enabled         =   True
-      Height          =   20
+      Height          =   38
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   349
+      Left            =   441
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -559,7 +559,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   487
+      Top             =   436
       Underline       =   False
       Visible         =   True
       Width           =   80
@@ -577,7 +577,7 @@ Begin Window mainWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   442
+      Left            =   441
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -590,7 +590,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   487
+      Top             =   515
       Underline       =   False
       Visible         =   True
       Width           =   80
@@ -612,7 +612,7 @@ Begin Window mainWindow
       HelpTag         =   ""
       Index           =   -2147483648
       Italic          =   False
-      Left            =   86
+      Left            =   85
       LimitText       =   0
       LockBottom      =   False
       LockedInPosition=   False
@@ -631,7 +631,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   453
+      Top             =   402
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -757,7 +757,7 @@ Begin Window mainWindow
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
-      Height          =   76
+      Height          =   31
       HelpTag         =   ""
       Index           =   -2147483648
       Italic          =   False
@@ -852,11 +852,7 @@ End
 #tag Events btnGetOAuthCode
 	#tag Event
 		Sub Action()
-		  Dim provider as string = pmProvider.Text
-		  Dim clientKey as String = txtClientKey.Text
-		  Dim clientSecret as String = txtClientSecret.Text
 		  
-		  App.oauth2 = new OAuth2(provider, clientKey, clientSecret)
 		  
 		  mClientInfo = new YoutubeClientInfo
 		  Dim url as string = mClientInfo.AssembleOAuthUri
@@ -872,14 +868,37 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events btnGetUserName
+#tag Events btnGetUploadurl
 	#tag Event
 		Sub Action()
-		  Dim userInfomation as JSONItem = App.oauth2.getUserInformation
-		  if (userInfomation<>nil)then
-		    txtName.Text = userInfomation.Value("name")
-		    txtid.Text = userInfomation.Value("id")
-		  end if
+		  
+		  dim client As YoutubeClientInfo = YoutubeClientInfo(mClientInfo)
+		  dim video As String
+		  dim http as new HTTPSecureSocket
+		  
+		  client.Title = client.UploadFile.Name
+		  
+		  video = client.AssembleVideoResource
+		  
+		  dim length As string = Cstr(client.UploadFile.Length)
+		  
+		  
+		  http.SetRequestHeader("Authorization","Bearer "+client.AccessToken)
+		  //http.SetRequestHeader("Content-Length",Len(video).ToText)
+		  http.SetRequestHeader("X-Upload-Content-Length",length)
+		  http.SetRequestHeader("x-upload-content-type","video/*")
+		  
+		  
+		  http.SetRequestContent(video,"application/json; charset=utf-8")
+		  
+		  dim result as string = http.Post(client.UploadFileApi,10)
+		  
+		  
+		  result =http.PageHeaders.Value("Location")
+		  
+		  client.UploadFileUrl = result
+		  
+		  txtLog.Text = http.PageHeaders.Source()
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -897,14 +916,13 @@ End
 		  
 		  
 		  
-		  //dlg.InitialDirectory = 
+		  
 		  dlg.Title = "Select a Video file"
 		  
 		  f = dlg.ShowModal
 		  If f <> Nil Then
-		    txtFile.Text = dlg.Result.NativePath
-		    App.oauth2.File = dlg.Result
-		    App.uploadFile.SetFile(dlg.Result)
+		    mClientInfo.UploadFile = dlg.Result
+		    
 		    
 		  Else
 		    //User Cancelled
@@ -915,85 +933,44 @@ End
 #tag Events btnUpload
 	#tag Event
 		Sub Action()
+		  // THIS METHOD PERFORMS THE DROPBOX API -  /files_put
+		  // PLEASE NOTE THE DROPBOX CORE API /files_put HAS A MAXIMUM OF 150MB
 		  
 		  
-		  dim fileuploader as HTTPSecureSocket = New HTTPSecureSocket
-		  
-		  dim formdataCreator as HttpFormdataGenerator = new HttpFormdataGenerator
-		  formdataCreator.AddContent("access_token",App.oauth2.AccessToken)
-		  formdataCreator.AddContent("upload_phase","start")
-		  
-		  dim filelength As String =  str(App.uploadfile.FileLength)
-		  
-		  formdataCreator.AddContent("file_size",filelength)
-		  
-		  dim body as String = formdataCreator.GetBody()
-		  
-		  fileuploader.SetRequestContent( body,"multipart/form-data; boundary="+chr(34)+formdataCreator.GetBoundary+chr(34) )
-		  
-		  dim response as string  = fileUploader.post("https://graph-video.facebook.com/me/videos", 10)
-		  
-		  Try
-		    
-		    //dim uploadinfo as JsonItem = new JSONItem(response)
-		    dim phaseInfo as UploadPhaseInfo =  App.uploadfile.ParsePhaseInfo(response)
-		    dim offset as OffsetInfo = phaseInfo.offset
-		    
-		    while (offset.startoffset < App.uploadfile.filelength)
-		      
-		      fileuploader  = New HTTPSecureSocket
-		      
-		      formdataCreator  = new HttpFormdataGenerator
-		      
-		      formdataCreator.AddContent("access_token",App.oauth2.AccessToken)
-		      formdataCreator.AddContent("upload_phase","transfer")
-		      dim startoffset as integer = offset.startoffset
-		      //if (startoffset<> 0) then 
-		      //startoffset = startoffset
-		      //end if 
-		      
-		      formdataCreator.AddContent("start_offset",chr(startoffset))
-		      formdataCreator.AddContent("upload_session_id",phaseInfo.upload_session_id)
-		      
-		      dim chunkdata as String = App.uploadFile.GetFileData(offset)
-		      
-		      formdataCreator.AddContent("video_file_chunk",chunkdata)
-		      
-		      body = formdataCreator.GetBody()
-		      
-		      fileuploader.SetRequestContent( body,"multipart/form-data; boundary="+chr(34)+formdataCreator.GetBoundary+chr(34) )
-		      
-		      dim response1 as string   = fileUploader.post("https://graph-video.facebook.com/me/videos",10)
-		      
-		      
-		      offset = App.uploadfile.ParseOffsetInfo(response1)
-		      
-		      
-		    wend
-		    
-		    fileuploader  = New HTTPSecureSocket
-		    
-		    formdataCreator  = new HttpFormdataGenerator
-		    
-		    formdataCreator.AddContent("access_token",App.oauth2.AccessToken)
-		    formdataCreator.AddContent("upload_phase","finish")
-		    
-		    formdataCreator.AddContent("upload_session_id",phaseInfo.upload_session_id)
-		    
-		    
-		    fileuploader.SetRequestContent( body,"multipart/form-data; boundary="+chr(34)+formdataCreator.GetBoundary+chr(34) )
-		    
-		    dim nextoffset as string   = fileUploader.post("https://graph-video.facebook.com/me/videos",10)
-		    
-		    offset = App.uploadfile.ParseOffsetInfo(nextoffset)
-		    
-		    
-		  Catch t 
-		    
-		  End Try
+		  // SET CONTENT AND CONTENT LENGTH HEADER
+		  dim http As new HTTPSecureSocket
+		  dim client As YoutubeClientInfo = YoutubeClientInfo(mClientInfo)
+		  Dim ourBinaryStream as BinaryStream = BinaryStream.Open(client.UploadFile, False)
+		  dim theFileStr as String = ourBinaryStream.Read(ourBinaryStream.Length)
+		  ourBinaryStream.Close
+		  dim FileContentLength as integer = theFileStr.Len
 		  
 		  
 		  
+		  
+		  http.SetRequestHeader("Authorization","Bearer "+client.AccessToken)
+		  http.SetRequestContent(theFileStr,"video/*")
+		  http.SetRequestHeader("Content-Length", CStr(FileContentLength))
+		  
+		  // SET POST VARIABLES
+		  Dim API_URL as String = client.UploadFileUrl
+		  
+		  
+		  
+		  
+		  txtLog.Text= ""
+		  
+		  // PERFORM SYNCHRONOUS POST
+		  Dim API_PutFile_Results_JSONString as String =http.SendRequest("PUT",API_URL,30)
+		  
+		  //  PARSE JSON RECEIVED RESULTS TO A DICTIONARY
+		  Dim ItemToParse as New JSONItem
+		  Dim API_PutFile_Results_Dictionary as Dictionary
+		  API_PutFile_Results_Dictionary = New Dictionary
+		  ItemToParse.Load(API_PutFile_Results_JSONString)
+		  API_PutFile_Results_Dictionary = Common_Module.JSONToDictionary(ItemToParse)
+		  txtlog.Text = ItemToParse.ToString
+		  //Return API_PutFile_Results_Dictionary
 		  
 		  
 		End Sub
@@ -1045,6 +1022,7 @@ End
 		    dim TokenResultsDictionary as Dictionary = Common_Module.JSONToDictionary(ItemToParse)
 		    
 		    txtToken.Text  = TokenResultsDictionary.Lookup("access_token","").StringValue
+		    mClientInfo.AccessToken = txtToken.Text
 		  END IF
 		  
 		  
