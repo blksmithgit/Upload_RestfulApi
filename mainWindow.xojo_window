@@ -933,11 +933,7 @@ End
 #tag Events btnUpload
 	#tag Event
 		Sub Action()
-		  // THIS METHOD PERFORMS THE DROPBOX API -  /files_put
-		  // PLEASE NOTE THE DROPBOX CORE API /files_put HAS A MAXIMUM OF 150MB
 		  
-		  
-		  // SET CONTENT AND CONTENT LENGTH HEADER
 		  dim http As new HTTPSecureSocket
 		  dim client As YoutubeClientInfo = YoutubeClientInfo(mClientInfo)
 		  Dim ourBinaryStream as BinaryStream = BinaryStream.Open(client.UploadFile, False)

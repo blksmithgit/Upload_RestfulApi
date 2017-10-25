@@ -58,6 +58,53 @@ Inherits ClientInfo
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub GetAccessToken()
+		  dim MySocket As  new HTTPSecureSocket
+		  //MySocket.ConnectionType = 3
+		  MySocket.Secure = True
+		  MySocket.Yield = true
+		  
+		  
+		  MySocket.ConnectionType = 3
+		  
+		  
+		  
+		  MySocket.SetRequestHeader("Content-Type","application/x-www-form-urlencoded")
+		  
+		  
+		  
+		  
+		  Dim d As  Dictionary= AssembleToken
+		  
+		  
+		  
+		  MySocket.SetFormData(d)
+		  
+		  
+		  dim url as string  = GetTokenUri
+		  
+		  
+		  
+		  dim API_Call_Results As  String=""
+		  
+		  
+		  API_Call_Results =MySocket.Post(url,10)
+		  
+		  IF API_Call_Results <> "" Then
+		    //•MessageBox 
+		    Dim ItemToParse as New JSONItem
+		    
+		    ItemToParse.Load(API_Call_Results)
+		    dim TokenResultsDictionary as Dictionary = Common_Module.JSONToDictionary(ItemToParse)
+		    
+		    AccessToken = TokenResultsDictionary.Lookup("access_token","").StringValue
+		  END IF
+		  
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function ParseOAuthCode(title as String) As String
 		  dim pos As integer = instr(title,"Success code=")
 		  if (pos>0) then
@@ -96,7 +143,7 @@ Inherits ClientInfo
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		UploadFileAPI As String = """https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status"""
+		UploadFileAPI As String = "https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status"
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -116,6 +163,7 @@ Inherits ClientInfo
 			Group="Behavior"
 			InitialValue="22"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Code"
@@ -126,7 +174,9 @@ Inherits ClientInfo
 		#tag ViewProperty
 			Name="Description"
 			Group="Behavior"
+			InitialValue="this is test"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
@@ -153,6 +203,7 @@ Inherits ClientInfo
 			Group="Behavior"
 			InitialValue="""""public"""""
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="RefreshToken"
@@ -170,11 +221,13 @@ Inherits ClientInfo
 			Name="Tags"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Title"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
@@ -184,9 +237,18 @@ Inherits ClientInfo
 			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="UploadFileAPI"
+			Group="Behavior"
+			InitialValue="""""https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status"""""
+			Type="String"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="UploadFileUrl"
 			Group="Behavior"
-			Type="Integer"
+			InitialValue="https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status"
+			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class
