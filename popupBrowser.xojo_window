@@ -90,8 +90,8 @@ End
 
 
 	#tag Method, Flags = &h0
-		Sub SetClient(client As ClientInfo)
-		  mClientInfo = client
+		Sub SetOAuth2Client(client as OAuth2)
+		  OAuthClient = client
 		  
 		  
 		End Sub
@@ -99,7 +99,7 @@ End
 
 
 	#tag Property, Flags = &h0
-		mClientInfo As ClientInfo
+		OAuthClient As OAuth2
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -112,12 +112,12 @@ End
 #tag Events htmlView
 	#tag Event
 		Sub TitleChanged(newTitle as String)
-		  dim code As String = mClientInfo.ParseOAuthCode( newTitle)
+		  dim code As String = OAuthClient.ParseOAuthResponse( newTitle)
 		  
 		  if (code <> "") then
 		    //OAuthCode = code
-		    mClientInfo.Code = code
-		    mainWindow.txtToken.Text =code
+		    
+		    //mainWindow.txtToken.Text =code
 		    //mainWindow.btnGetUserName.Enabled = true
 		    
 		    MsgBox "Close this window"
@@ -129,8 +129,10 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub DocumentComplete(URL as String)
-		  //Self.htmlView.ExecuteJavaScript("document.title='zurl '+document.URL;")
-		  dim t As string = url
+		  if (OAuthClient.NeedExecuteJavascript) then
+		    Self.htmlView.ExecuteJavaScript("document.title='zurl '+document.URL;")
+		  end if
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents

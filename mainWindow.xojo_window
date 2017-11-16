@@ -9,7 +9,7 @@ Begin Window mainWindow
    FullScreen      =   False
    FullScreenButton=   False
    HasBackColor    =   False
-   Height          =   592
+   Height          =   478
    ImplicitInstance=   True
    LiveResize      =   True
    MacProcID       =   0
@@ -25,7 +25,7 @@ Begin Window mainWindow
    Resizeable      =   True
    Title           =   "Reftful api -upload "
    Visible         =   True
-   Width           =   588
+   Width           =   580
    Begin Label Label1
       AutoDeactivate  =   True
       Bold            =   False
@@ -48,13 +48,14 @@ Begin Window mainWindow
       Selectable      =   False
       TabIndex        =   0
       TabPanelIndex   =   0
-      Text            =   "Client Key:"
+      TabStop         =   True
+      Text            =   "Client Id:"
       TextAlign       =   0
       TextColor       =   &c00000000
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   65
+      Top             =   124
       Transparent     =   True
       Underline       =   False
       Visible         =   True
@@ -82,13 +83,14 @@ Begin Window mainWindow
       Selectable      =   False
       TabIndex        =   1
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Client Secret :"
       TextAlign       =   0
       TextColor       =   &c00000000
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   109
+      Top             =   168
       Transparent     =   True
       Underline       =   False
       Visible         =   True
@@ -116,13 +118,14 @@ Begin Window mainWindow
       Selectable      =   False
       TabIndex        =   2
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Provider :"
       TextAlign       =   0
       TextColor       =   &c00000000
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   21
+      Top             =   80
       Transparent     =   True
       Underline       =   False
       Visible         =   True
@@ -164,14 +167,14 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   63
+      Top             =   122
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
       Width           =   287
    End
    Begin TextField txtClientSecret
-      AcceptTabs      =   False
+      AcceptTabs      =   True
       Alignment       =   0
       AutoDeactivate  =   True
       AutomaticallyCheckSpelling=   False
@@ -194,7 +197,7 @@ Begin Window mainWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
-      Mask            =   "●●●●●●●●●●●●●"
+      Mask            =   ""
       Password        =   False
       ReadOnly        =   False
       Scope           =   0
@@ -206,7 +209,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   107
+      Top             =   166
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -238,298 +241,8 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   20
+      Top             =   79
       Underline       =   False
-      Visible         =   True
-      Width           =   287
-   End
-   Begin PushButton btnGetOAuthCode
-      AutoDeactivate  =   True
-      Bold            =   False
-      ButtonStyle     =   "0"
-      Cancel          =   False
-      Caption         =   "Get OAuth Code"
-      Default         =   True
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   349
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Scope           =   0
-      TabIndex        =   6
-      TabPanelIndex   =   0
-      TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   327
-      Underline       =   False
-      Visible         =   True
-      Width           =   173
-   End
-   Begin Label Label4
-      AutoDeactivate  =   True
-      Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   86
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Multiline       =   False
-      Scope           =   0
-      Selectable      =   False
-      TabIndex        =   7
-      TabPanelIndex   =   0
-      Text            =   "OAuth Code"
-      TextAlign       =   0
-      TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   153
-      Transparent     =   True
-      Underline       =   False
-      Visible         =   True
-      Width           =   100
-   End
-   Begin Label Label5
-      AutoDeactivate  =   True
-      Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   86
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Multiline       =   False
-      Scope           =   0
-      Selectable      =   False
-      TabIndex        =   9
-      TabPanelIndex   =   0
-      Text            =   "Your name :"
-      TextAlign       =   0
-      TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   241
-      Transparent     =   True
-      Underline       =   False
-      Visible         =   True
-      Width           =   100
-   End
-   Begin TextField txtName
-      AcceptTabs      =   False
-      Alignment       =   0
-      AutoDeactivate  =   True
-      AutomaticallyCheckSpelling=   False
-      BackColor       =   &cFFFFFF00
-      Bold            =   False
-      Border          =   True
-      CueText         =   ""
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Format          =   ""
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      Italic          =   False
-      Left            =   235
-      LimitText       =   0
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Mask            =   ""
-      Password        =   False
-      ReadOnly        =   False
-      Scope           =   0
-      TabIndex        =   10
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Text            =   ""
-      TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   239
-      Underline       =   False
-      UseFocusRing    =   True
-      Visible         =   True
-      Width           =   287
-   End
-   Begin PushButton btnGetUploadurl
-      AutoDeactivate  =   True
-      Bold            =   False
-      ButtonStyle     =   "0"
-      Cancel          =   False
-      Caption         =   "Get UploadUrl"
-      Default         =   False
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   409
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Scope           =   0
-      TabIndex        =   12
-      TabPanelIndex   =   0
-      TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   476
-      Underline       =   False
-      Visible         =   True
-      Width           =   112
-   End
-   Begin TextField txtOAuthCode
-      AcceptTabs      =   False
-      Alignment       =   0
-      AutoDeactivate  =   True
-      AutomaticallyCheckSpelling=   False
-      BackColor       =   &cFFFFFF00
-      Bold            =   False
-      Border          =   True
-      CueText         =   ""
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Format          =   ""
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      Italic          =   False
-      Left            =   235
-      LimitText       =   0
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Mask            =   ""
-      Password        =   False
-      ReadOnly        =   False
-      Scope           =   0
-      TabIndex        =   13
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Text            =   ""
-      TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   151
-      Underline       =   False
-      UseFocusRing    =   True
-      Visible         =   True
-      Width           =   287
-   End
-   Begin Label Label6
-      AutoDeactivate  =   True
-      Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   86
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Multiline       =   False
-      Scope           =   0
-      Selectable      =   False
-      TabIndex        =   14
-      TabPanelIndex   =   0
-      Text            =   "Your id :"
-      TextAlign       =   0
-      TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   284
-      Transparent     =   True
-      Underline       =   False
-      Visible         =   True
-      Width           =   100
-   End
-   Begin TextField txtid
-      AcceptTabs      =   False
-      Alignment       =   0
-      AutoDeactivate  =   True
-      AutomaticallyCheckSpelling=   False
-      BackColor       =   &cFFFFFF00
-      Bold            =   False
-      Border          =   True
-      CueText         =   ""
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Format          =   ""
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      Italic          =   False
-      Left            =   235
-      LimitText       =   0
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Mask            =   ""
-      Password        =   False
-      ReadOnly        =   False
-      Scope           =   0
-      TabIndex        =   15
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Text            =   ""
-      TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   283
-      Underline       =   False
-      UseFocusRing    =   True
       Visible         =   True
       Width           =   287
    End
@@ -546,7 +259,7 @@ Begin Window mainWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   441
+      Left            =   450
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -559,7 +272,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   436
+      Top             =   39
       Underline       =   False
       Visible         =   True
       Width           =   80
@@ -577,7 +290,7 @@ Begin Window mainWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   441
+      Left            =   442
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -590,7 +303,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   515
+      Top             =   438
       Underline       =   False
       Visible         =   True
       Width           =   80
@@ -612,7 +325,7 @@ Begin Window mainWindow
       HelpTag         =   ""
       Index           =   -2147483648
       Italic          =   False
-      Left            =   85
+      Left            =   86
       LimitText       =   0
       LockBottom      =   False
       LockedInPosition=   False
@@ -631,200 +344,18 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   402
+      Top             =   13
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
       Width           =   436
-   End
-   Begin PushButton btnGetToken
-      AutoDeactivate  =   True
-      Bold            =   False
-      ButtonStyle     =   "0"
-      Cancel          =   False
-      Caption         =   "Get Token"
-      Default         =   False
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   350
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Scope           =   0
-      TabIndex        =   19
-      TabPanelIndex   =   0
-      TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   370
-      Underline       =   False
-      Visible         =   True
-      Width           =   172
-   End
-   Begin Label Label7
-      AutoDeactivate  =   True
-      Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   86
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Multiline       =   False
-      Scope           =   0
-      Selectable      =   False
-      TabIndex        =   20
-      TabPanelIndex   =   0
-      Text            =   "Access Token"
-      TextAlign       =   0
-      TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   197
-      Transparent     =   True
-      Underline       =   False
-      Visible         =   True
-      Width           =   100
-   End
-   Begin TextField txtToken
-      AcceptTabs      =   False
-      Alignment       =   0
-      AutoDeactivate  =   True
-      AutomaticallyCheckSpelling=   False
-      BackColor       =   &cFFFFFF00
-      Bold            =   False
-      Border          =   True
-      CueText         =   ""
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Format          =   ""
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      Italic          =   False
-      Left            =   235
-      LimitText       =   0
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Mask            =   ""
-      Password        =   False
-      ReadOnly        =   False
-      Scope           =   0
-      TabIndex        =   21
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Text            =   ""
-      TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   195
-      Underline       =   False
-      UseFocusRing    =   True
-      Visible         =   True
-      Width           =   287
-   End
-   Begin TextField txtLog
-      AcceptTabs      =   False
-      Alignment       =   0
-      AutoDeactivate  =   True
-      AutomaticallyCheckSpelling=   False
-      BackColor       =   &cFFFFFF00
-      Bold            =   False
-      Border          =   True
-      CueText         =   ""
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Format          =   ""
-      Height          =   31
-      HelpTag         =   ""
-      Index           =   -2147483648
-      Italic          =   False
-      Left            =   86
-      LimitText       =   0
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Mask            =   ""
-      Password        =   False
-      ReadOnly        =   False
-      Scope           =   0
-      TabIndex        =   22
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Text            =   ""
-      TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   359
-      Underline       =   False
-      UseFocusRing    =   True
-      Visible         =   True
-      Width           =   251
-   End
-   Begin Label Label8
-      AutoDeactivate  =   True
-      Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   86
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Multiline       =   False
-      Scope           =   0
-      Selectable      =   False
-      TabIndex        =   23
-      TabPanelIndex   =   0
-      Text            =   "Log"
-      TextAlign       =   0
-      TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   327
-      Transparent     =   True
-      Underline       =   False
-      Visible         =   True
-      Width           =   100
    End
    Begin HttpSecureSocket MySocket
       CertificateFile =   
       CertificatePassword=   ""
       CertificateRejectionFile=   
       ConnectionType  =   3
+      Enabled         =   True
       Index           =   -2147483648
       LockedInPosition=   False
       Scope           =   0
@@ -843,62 +374,16 @@ End
 
 
 	#tag Property, Flags = &h0
-		mClientInfo As ClientInfo
+		mUploadFile As FolderItem
 	#tag EndProperty
 
 
 #tag EndWindowCode
 
-#tag Events btnGetOAuthCode
+#tag Events pmProvider
 	#tag Event
-		Sub Action()
+		Sub Change()
 		  
-		  
-		  mClientInfo = new YoutubeClientInfo
-		  Dim url as string = mClientInfo.AssembleOAuthUri
-		  
-		  popupBrowser.SetClient mClientInfo
-		  popupBrowser.htmlView.LoadURL url
-		  
-		  popupBrowser.ShowModal
-		  
-		  
-		  
-		  
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btnGetUploadurl
-	#tag Event
-		Sub Action()
-		  
-		  dim client As YoutubeClientInfo = YoutubeClientInfo(mClientInfo)
-		  dim video As String
-		  dim http as new HTTPSecureSocket
-		  
-		  client.Title = client.UploadFile.Name
-		  
-		  video = client.AssembleVideoResource
-		  
-		  dim length As string = Cstr(client.UploadFile.Length)
-		  
-		  
-		  http.SetRequestHeader("Authorization","Bearer "+client.AccessToken)
-		  //http.SetRequestHeader("Content-Length",Len(video).ToText)
-		  http.SetRequestHeader("X-Upload-Content-Length",length)
-		  http.SetRequestHeader("x-upload-content-type","video/*")
-		  
-		  
-		  http.SetRequestContent(video,"application/json; charset=utf-8")
-		  
-		  dim result as string = http.Post(client.UploadFileApi,10)
-		  
-		  
-		  result =http.PageHeaders.Value("Location")
-		  
-		  client.UploadFileUrl = result
-		  
-		  txtLog.Text = http.PageHeaders.Source()
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -921,7 +406,7 @@ End
 		  
 		  f = dlg.ShowModal
 		  If f <> Nil Then
-		    mClientInfo.UploadFile = dlg.Result
+		    mUploadFile = dlg.Result
 		    
 		    
 		  Else
@@ -933,93 +418,21 @@ End
 #tag Events btnUpload
 	#tag Event
 		Sub Action()
+		  dim oauth2 As OAuth2= new YoutubeOAuth2
 		  
-		  dim http As new HTTPSecureSocket
-		  dim client As YoutubeClientInfo = YoutubeClientInfo(mClientInfo)
-		  Dim ourBinaryStream as BinaryStream = BinaryStream.Open(client.UploadFile, False)
-		  dim theFileStr as String = ourBinaryStream.Read(ourBinaryStream.Length)
-		  ourBinaryStream.Close
-		  dim FileContentLength as integer = theFileStr.Len
+		  popupBrowser.SetOAuth2Client (oauth2)
+		  popupBrowser.htmlView.LoadURL(oauth2.GetOAuth2Url)
+		  popupBrowser.ShowModal
 		  
-		  
-		  
-		  
-		  http.SetRequestHeader("Authorization","Bearer "+client.AccessToken)
-		  http.SetRequestContent(theFileStr,"video/*")
-		  http.SetRequestHeader("Content-Length", CStr(FileContentLength))
-		  
-		  // SET POST VARIABLES
-		  Dim API_URL as String = client.UploadFileUrl
-		  
-		  
-		  
-		  
-		  txtLog.Text= ""
-		  
-		  // PERFORM SYNCHRONOUS POST
-		  Dim API_PutFile_Results_JSONString as String =http.SendRequest("PUT",API_URL,30)
-		  
-		  //  PARSE JSON RECEIVED RESULTS TO A DICTIONARY
-		  Dim ItemToParse as New JSONItem
-		  Dim API_PutFile_Results_Dictionary as Dictionary
-		  API_PutFile_Results_Dictionary = New Dictionary
-		  ItemToParse.Load(API_PutFile_Results_JSONString)
-		  API_PutFile_Results_Dictionary = Common_Module.JSONToDictionary(ItemToParse)
-		  txtlog.Text = ItemToParse.ToString
-		  //Return API_PutFile_Results_Dictionary
-		  
-		  
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btnGetToken
-	#tag Event
-		Sub Action()
-		  //dim MySocket As  new HTTPSecureSocket
-		  //MySocket.ConnectionType = 3
-		  MySocket.Secure = True
-		  MySocket.Yield = true
-		  
-		  //MySocket.HTTPProxyAddress = "127.0.0.1"
-		  //MySocket.HTTPProxyPort = 1080
-		  MySocket.ConnectionType = 3
-		  
-		  
-		  
-		  MySocket.SetRequestHeader("Content-Type","application/x-www-form-urlencoded")
-		  
-		  
-		  
-		  
-		  Dim d As  Dictionary= mClientInfo.AssembleToken
-		  
-		  
-		  
-		  MySocket.SetFormData(d)
-		  
-		  
-		  txtLog.Text = ""
-		  dim url as string  = mClientInfo.GetTokenUri
-		  
-		  
-		  
-		  dim API_Call_Results As  String=""
-		  
-		  //API_Call_Results=MySocket.SendRequest("Post",url,60)
-		  txtLog.Text = ""
-		  txtToken.Text = ""
-		  API_Call_Results =MySocket.Post(url,10)
-		  txtLog.Text = API_Call_Results
-		  IF API_Call_Results <> "" Then
-		    //MessageBox 
-		    Dim ItemToParse as New JSONItem
+		  if (oauth2.IsPassOAuth2) then
+		    dim uploadclient as new YoutubeClient
+		    dim uploadinfo as UploadFileInfo_Youtube = new UploadFileInfo_Youtube
+		    uploadinfo.Title = mUploadFile.Name
+		    dim result as boolean =uploadclient.Upload(oauth2,mUploadFile,uploadinfo)
 		    
-		    ItemToParse.Load(API_Call_Results)
-		    dim TokenResultsDictionary as Dictionary = Common_Module.JSONToDictionary(ItemToParse)
-		    
-		    txtToken.Text  = TokenResultsDictionary.Lookup("access_token","").StringValue
-		    mClientInfo.AccessToken = txtToken.Text
-		  END IF
+		  end if
+		  
+		  
 		  
 		  
 		End Sub
@@ -1035,19 +448,18 @@ End
 		Sub Error(code as integer)
 		  dim erro as integer
 		  erro = code
-		  txtLog.Text = code.ToText
+		  //txtLog.Text = code.ToText
 		  
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Sub Connected()
-		  dim a As string
-		  txtLog.Text = "connected"
+		  
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Sub HeadersReceived(headers as internetHeaders, httpStatus as integer)
-		  txtLog.text = chr(httpStatus)
+		  //txtLog.text = chr(httpStatus)
 		End Sub
 	#tag EndEvent
 	#tag Event

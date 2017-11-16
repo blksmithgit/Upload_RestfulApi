@@ -1,16 +1,10 @@
 #tag Class
-Protected Class UploadedFile
-	#tag Property, Flags = &h0
-		Length As Integer
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		Name As String
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		Path As String
-	#tag EndProperty
+Protected Class NetHelper
+	#tag Method, Flags = &h0
+		 Shared Function GetSecureSocket() As HTTPSecureSocket
+		  Return new HTTPSecureSocket
+		End Function
+	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -33,11 +27,6 @@ Protected Class UploadedFile
 			Visible=true
 			Group="ID"
 			Type="String"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Path"
-			Group="Behavior"
-			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
