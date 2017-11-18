@@ -8,10 +8,21 @@ Protected Class HttpFormdataGenerator
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub AddFileContent(name as String,value As String,filename As String)
+		  Dim content as String = Dash+Boundary+crlf+boundaryHeader+chr(34)+name+chr(34)+"; filename="+chr(34)+filename+chr(34)+crlf+"Content-Type: video/mp4"+crlf+crlf+value+crlf
+		  HttpBody = HttpBody + content
+		  
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub Constructor()
 		  crlf = chr( 13) + chr( 10 )
+		  Dash = "--"
 		  Boundary = CreateBoundaryID
-		  Endline = Dash+Boundary+crlf+ Dash+crlf+crlf
+		  Endline = Dash+Boundary+ Dash+crlf+crlf
+		  
 		  
 		End Sub
 	#tag EndMethod
@@ -41,6 +52,12 @@ Protected Class HttpFormdataGenerator
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function GetUploadUrl(userid as String) As String
+		  
+		End Function
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h1
 		Protected Boundary As string
@@ -48,6 +65,10 @@ Protected Class HttpFormdataGenerator
 
 	#tag Property, Flags = &h21
 		Private crlf As String
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		Dash As String
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -62,11 +83,14 @@ Protected Class HttpFormdataGenerator
 	#tag Constant, Name = BoundaryHeader, Type = String, Dynamic = False, Default = \"Content-Disposition: form-data; name\x3D", Scope = Public
 	#tag EndConstant
 
-	#tag Constant, Name = Dash, Type = String, Dynamic = False, Default = \"\xE2\x80\x94", Scope = Public
-	#tag EndConstant
-
 
 	#tag ViewBehavior
+		#tag ViewProperty
+			Name="Dash"
+			Group="Behavior"
+			Type="String"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Endline"
 			Group="Behavior"

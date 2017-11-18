@@ -1,20 +1,21 @@
 #tag Class
 Protected Class OAuth2
 	#tag Method, Flags = &h0
+		Function GetExecuteJavascript() As string
+		  return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function GetOAuth2Url() As string
-		  
+		  dim url as string = OAuthUri+"client_id="+ClientID+"&redirect_uri="+RedirectUri+"&scope="+Scope+"&response_type="+ResponseType
+		  return url
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Function IsPassOAuth2() As Boolean
 		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function NeedExecuteJavascript() As Boolean
-		  return false
 		End Function
 	#tag EndMethod
 

@@ -129,8 +129,9 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub DocumentComplete(URL as String)
-		  if (OAuthClient.NeedExecuteJavascript) then
-		    Self.htmlView.ExecuteJavaScript("document.title='zurl '+document.URL;")
+		  dim js as string= OAuthClient.GetExecuteJavascript
+		  if (js<>"") then
+		    Self.htmlView.ExecuteJavaScript(js)
 		  end if
 		  
 		End Sub

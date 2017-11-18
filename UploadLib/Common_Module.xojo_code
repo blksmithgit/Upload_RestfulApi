@@ -51,7 +51,7 @@ Protected Module Common_Module
 		      if j.IsArray then
 		        r.Value( name ) = JSONToArray( j )
 		        
-		      else
+		        'else
 		        r.Value( name ) = JSONToDictionary( j )
 		      end if
 		      
@@ -95,31 +95,6 @@ Protected Module Common_Module
 		  
 		End Sub
 	#tag EndMethod
-
-
-	#tag Property, Flags = &h0
-		Dropbox_AppName As String
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		Dropbox_Client_ID As String
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		Dropbox_Client_Secret As String
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		Dropbox_oAuth_SuccessBool As Boolean
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		Dropbox_Redirect_URI As String
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		Token As String
-	#tag EndProperty
 
 
 	#tag ViewBehavior

@@ -48,14 +48,13 @@ Begin Window mainWindow
       Selectable      =   False
       TabIndex        =   0
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Client Id:"
       TextAlign       =   0
       TextColor       =   &c00000000
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   124
+      Top             =   176
       Transparent     =   True
       Underline       =   False
       Visible         =   True
@@ -83,49 +82,13 @@ Begin Window mainWindow
       Selectable      =   False
       TabIndex        =   1
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Client Secret :"
       TextAlign       =   0
       TextColor       =   &c00000000
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   168
-      Transparent     =   True
-      Underline       =   False
-      Visible         =   True
-      Width           =   100
-   End
-   Begin Label Label3
-      AutoDeactivate  =   True
-      Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   86
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Multiline       =   False
-      Scope           =   0
-      Selectable      =   False
-      TabIndex        =   2
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Text            =   "Provider :"
-      TextAlign       =   0
-      TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   80
+      Top             =   220
       Transparent     =   True
       Underline       =   False
       Visible         =   True
@@ -167,7 +130,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   122
+      Top             =   174
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -209,40 +172,9 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   166
+      Top             =   218
       Underline       =   False
       UseFocusRing    =   True
-      Visible         =   True
-      Width           =   287
-   End
-   Begin PopupMenu pmProvider
-      AutoDeactivate  =   True
-      Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      InitialValue    =   "Youtube\nFacebook\n"
-      Italic          =   False
-      Left            =   235
-      ListIndex       =   0
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Scope           =   0
-      TabIndex        =   5
-      TabPanelIndex   =   0
-      TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   79
-      Underline       =   False
       Visible         =   True
       Width           =   287
    End
@@ -284,7 +216,7 @@ Begin Window mainWindow
       Cancel          =   False
       Caption         =   "Upload"
       Default         =   False
-      Enabled         =   True
+      Enabled         =   False
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -355,12 +287,97 @@ Begin Window mainWindow
       CertificatePassword=   ""
       CertificateRejectionFile=   
       ConnectionType  =   3
-      Enabled         =   True
       Index           =   -2147483648
       LockedInPosition=   False
       Scope           =   0
       Secure          =   True
       TabPanelIndex   =   0
+   End
+   Begin GroupBox GroupBox1
+      AutoDeactivate  =   True
+      Bold            =   False
+      Caption         =   "Service"
+      Enabled         =   True
+      Height          =   70
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   86
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Scope           =   0
+      TabIndex        =   19
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   72
+      Underline       =   False
+      Visible         =   True
+      Width           =   436
+      Begin RadioButton rgYoutube
+         AutoDeactivate  =   True
+         Bold            =   False
+         Caption         =   "Youtube"
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "GroupBox1"
+         Italic          =   False
+         Left            =   128
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   0
+         TabPanelIndex   =   0
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   108
+         Underline       =   False
+         Value           =   True
+         Visible         =   True
+         Width           =   100
+      End
+      Begin RadioButton rgFacebook
+         AutoDeactivate  =   True
+         Bold            =   False
+         Caption         =   "Facebook"
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "GroupBox1"
+         Italic          =   False
+         Left            =   373
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   1
+         TabPanelIndex   =   0
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   108
+         Underline       =   False
+         Value           =   False
+         Visible         =   True
+         Width           =   100
+      End
    End
 End
 #tag EndWindow
@@ -380,13 +397,6 @@ End
 
 #tag EndWindowCode
 
-#tag Events pmProvider
-	#tag Event
-		Sub Change()
-		  
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events btnOpenFile
 	#tag Event
 		Sub Action()
@@ -407,8 +417,8 @@ End
 		  f = dlg.ShowModal
 		  If f <> Nil Then
 		    mUploadFile = dlg.Result
-		    
-		    
+		    txtFile.Text = f.Name
+		    btnUpload.Enabled=true
 		  Else
 		    //User Cancelled
 		  End If
@@ -418,17 +428,35 @@ End
 #tag Events btnUpload
 	#tag Event
 		Sub Action()
-		  dim oauth2 As OAuth2= new YoutubeOAuth2
 		  
-		  popupBrowser.SetOAuth2Client (oauth2)
-		  popupBrowser.htmlView.LoadURL(oauth2.GetOAuth2Url)
-		  popupBrowser.ShowModal
+		  dim oauth2 As OAuth2
 		  
-		  if (oauth2.IsPassOAuth2) then
-		    dim uploadclient as new YoutubeClient
-		    dim uploadinfo as UploadFileInfo_Youtube = new UploadFileInfo_Youtube
-		    uploadinfo.Title = mUploadFile.Name
-		    dim result as boolean =uploadclient.Upload(oauth2,mUploadFile,uploadinfo)
+		  if (rgYoutube.Value) then
+		    
+		    oauth2= new YoutubeOAuth2
+		    
+		    popupBrowser.SetOAuth2Client (oauth2)
+		    popupBrowser.htmlView.LoadURL(oauth2.GetOAuth2Url)
+		    popupBrowser.ShowModal
+		    
+		    if (oauth2.IsPassOAuth2) then
+		      dim uploadclient as new YoutubeClient
+		      dim uploadinfo as UploadFileInfo_Youtube = new UploadFileInfo_Youtube
+		      uploadinfo.Title = mUploadFile.Name
+		      dim result as boolean =uploadclient.Upload(oauth2,mUploadFile,uploadinfo)
+		    end if
+		  else 
+		    oauth2= new FacebookOAuth2
+		    
+		    popupBrowser.SetOAuth2Client (oauth2)
+		    popupBrowser.htmlView.LoadURL(oauth2.GetOAuth2Url)
+		    popupBrowser.ShowModal
+		    
+		    if (oauth2.IsPassOAuth2) then
+		      dim uploadclient as new FacebookClient
+		      
+		      dim result as boolean =uploadclient.Upload(oauth2,mUploadFile)
+		    end if
 		    
 		  end if
 		  

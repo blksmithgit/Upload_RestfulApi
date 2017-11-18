@@ -50,9 +50,11 @@ Protected Class YoutubeClient
 		  
 		  //  PARSE JSON RECEIVED RESULTS TO A DICTIONARY
 		  Dim ItemToParse as New JSONItem
-		  Dim API_PutFile_Results_Dictionary as Dictionary
-		  API_PutFile_Results_Dictionary = New Dictionary
 		  ItemToParse.Load(API_PutFile_Results_JSONString)
+		  
+		  Dim API_PutFile_Results_Dictionary as  new Dictionary
+		  API_PutFile_Results_Dictionary = New Dictionary
+		  
 		  API_PutFile_Results_Dictionary = Common_Module.JSONToDictionary(ItemToParse)
 		  
 		  //Return API_PutFile_Results_Dictionary
@@ -118,7 +120,7 @@ Protected Class YoutubeClient
 		  
 		  http.SetRequestContent(videoResource,"application/json; charset=utf-8")
 		  
-		  dim response as string=http.Post(UploadFileApi,10)
+		  dim response as string=http.Post(UploadFileURI,10)
 		  
 		  dim result as string =http.PageHeaders.Value("Location")
 		  
@@ -162,7 +164,7 @@ Protected Class YoutubeClient
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		UploadFileAPI As String = "https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status"
+		UploadFileURI As String = "https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status"
 	#tag EndProperty
 
 
@@ -201,7 +203,7 @@ Protected Class YoutubeClient
 			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="UploadFileAPI"
+			Name="UploadFileURI"
 			Group="Behavior"
 			InitialValue="""""https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status"""""
 			Type="String"

@@ -1,6 +1,12 @@
 #tag Class
 Protected Class OffsetInfo
 	#tag Method, Flags = &h0
+		Function GetReadCount() As Integer
+		  return endoffset-startoffset
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function IsComplete() As Boolean
 		  return startoffset=endoffset  and endoffset<>0
 		End Function

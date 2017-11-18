@@ -16,9 +16,8 @@ Inherits OAuth2
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetOAuth2Url() As String
-		  dim url as string = OAuthUri+"client_id="+ClientID+"&redirect_uri="+RedirectUri+"&scope="+Scope+"&response_type="+ResponseType
-		  return url
+		Function GetExecuteJavascript() As string
+		  return "document.title='zurl '+document.URL;"
 		End Function
 	#tag EndMethod
 
@@ -48,25 +47,36 @@ Inherits OAuth2
 
 	#tag Method, Flags = &h0
 		Function IsPassOAuth2() As Boolean
-		  return Code<>""
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function NeedExecuteJavascript() As Boolean
-		  return true
+		  return AccessToken<>""
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Function ParseOAuthResponse(data As  String) As string
-		  dim pos As integer = instr(data,"Success code=")
-		  if (pos>0) then
-		    Code= data.right(len(data)-len("Success code="))
-		    return Code
-		  Else
-		    return ""
+		  if instr(data,"zurl")>0 then
+		    dim myURL() as string = split(data, "zurl")
+		    dim url as string = myUrl(1)
+		    
+		    Dim parts() as string = split(url, "#")
+		    Dim i as Integer = UBound(parts)
+		    
+		    if Ubound(parts) < 1 then
+		      return ""
+		    end if
+		    
+		    
+		    parts = split(parts(1), "&")
+		    if Ubound(parts) = -1 then
+		      return ""
+		    end if
+		    '
+		    Dim tmpString() as string = split(parts(0), "=")
+		    AccessToken = tmpString(1)
+		    return AccessToken
+		    
+		    
 		  end if
+		  return ""
 		End Function
 	#tag EndMethod
 

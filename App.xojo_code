@@ -3,14 +3,9 @@ Protected Class App
 Inherits Application
 	#tag Event
 		Sub Open()
-		  App.uploadFile = new UploadData
+		  
 		End Sub
 	#tag EndEvent
-
-
-	#tag Property, Flags = &h0
-		uploadFile As UploadData
-	#tag EndProperty
 
 
 	#tag Constant, Name = kEditClear, Type = String, Dynamic = False, Default = \"\xE5\x89\x8A\xE9\x99\xA4", Scope = Public

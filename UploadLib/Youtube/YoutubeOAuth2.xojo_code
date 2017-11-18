@@ -17,45 +17,8 @@ Inherits OAuth2
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function GetOAuth2Url() As String
-		  dim url as string = OAuthUri+"client_id="+ClientID+"&redirect_uri="+RedirectUri+"&scope="+Scope+"&response_type="+ResponseType
-		  return url
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function isComplete(url as string) As Boolean
-		  Dim parts() as string = split(url, "#")
-		  Dim i as Integer = UBound(parts)
-		  
-		  if Ubound(parts) < 1 then
-		    return false
-		  end if
-		  
-		  
-		  parts = split(parts(1), "&")
-		  if Ubound(parts) = -1 then
-		    return false
-		  end if
-		  
-		  Dim tmpString() as string = split(parts(0), "=")
-		  Self.accessToken = tmpString(1)
-		  
-		  tmpString() = split(parts(1), "=")
-		  //Self.expired = val(tmpString(1))
-		  return true
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Function IsPassOAuth2() As Boolean
 		  return Code<>""
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function NeedExecuteJavascript() As Boolean
-		  return false
 		End Function
 	#tag EndMethod
 
