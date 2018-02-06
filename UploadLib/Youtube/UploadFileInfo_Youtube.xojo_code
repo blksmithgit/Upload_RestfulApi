@@ -36,7 +36,7 @@ Protected Class UploadFileInfo_Youtube
 			Name="CategoryId"
 			Group="Behavior"
 			InitialValue="22"
-			Type="String"
+			Type="Integer"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty

@@ -1,5 +1,6 @@
 #tag Class
 Protected Class YoutubeClient
+Implements IUploadClient
 	#tag Method, Flags = &h0
 		Function AssembleVideoResource(fileinfo as UploadFileInfo_Youtube) As String
 		  dim snippet As  JSONItem = new JSONItem
@@ -55,13 +56,21 @@ Protected Class YoutubeClient
 		  Dim API_PutFile_Results_Dictionary as  new Dictionary
 		  API_PutFile_Results_Dictionary = New Dictionary
 		  
-		  API_PutFile_Results_Dictionary = Common_Module.JSONToDictionary(ItemToParse)
+		  API_PutFile_Results_Dictionary = Upload_Common.JSONToDictionary(ItemToParse)
 		  
 		  //Return API_PutFile_Results_Dictionary
 		  
 		  return true
 		  
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Init(oauth2 as OAuth2,file as FolderItem)
+		  // 这是接口IUploadClient的一部分。
+		  
+		  
+		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -87,7 +96,7 @@ Protected Class YoutubeClient
 		    Dim ItemToParse as New JSONItem
 		    
 		    ItemToParse.Load(API_Call_Results)
-		    dim TokenResultsDictionary as Dictionary = Common_Module.JSONToDictionary(ItemToParse)
+		    dim TokenResultsDictionary as Dictionary = Upload_Common.JSONToDictionary(ItemToParse)
 		    
 		    accessToken = TokenResultsDictionary.Lookup("access_token","").StringValue
 		    

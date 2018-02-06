@@ -379,6 +379,37 @@ Begin Window mainWindow
          Width           =   100
       End
    End
+   Begin PushButton PushButton1
+      AutoDeactivate  =   True
+      Bold            =   False
+      ButtonStyle     =   "0"
+      Cancel          =   False
+      Caption         =   "OK"
+      Default         =   True
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   76
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Scope           =   0
+      TabIndex        =   20
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   406
+      Underline       =   False
+      Visible         =   True
+      Width           =   80
+   End
 End
 #tag EndWindow
 
@@ -431,13 +462,16 @@ End
 		  
 		  dim oauth2 As OAuth2
 		  
+		  
+		  
+		  
 		  if (rgYoutube.Value) then
 		    
 		    oauth2= new YoutubeOAuth2
 		    
-		    popupBrowser.SetOAuth2Client (oauth2)
-		    popupBrowser.htmlView.LoadURL(oauth2.GetOAuth2Url)
-		    popupBrowser.ShowModal
+		    OAuthWindow.SetOAuth2Client (oauth2)
+		    OAuthWindow.LoadOAuthUrl
+		    OAuthWindow.ShowModal
 		    
 		    if (oauth2.IsPassOAuth2) then
 		      dim uploadclient as new YoutubeClient
@@ -448,9 +482,9 @@ End
 		  else 
 		    oauth2= new FacebookOAuth2
 		    
-		    popupBrowser.SetOAuth2Client (oauth2)
-		    popupBrowser.htmlView.LoadURL(oauth2.GetOAuth2Url)
-		    popupBrowser.ShowModal
+		    OAuthWindow.SetOAuth2Client (oauth2)
+		    OAuthWindow.LoadOAuthUrl
+		    OAuthWindow.ShowModal
 		    
 		    if (oauth2.IsPassOAuth2) then
 		      dim uploadclient as new FacebookClient
@@ -514,6 +548,13 @@ End
 	#tag Event
 		Sub ReceiveProgress(bytesReceived as integer, totalBytes as integer, newData as string)
 		  dim t As  integer = bytesReceived
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events PushButton1
+	#tag Event
+		Sub Action()
+		  SharetoWindow.Show
 		End Sub
 	#tag EndEvent
 #tag EndEvents
